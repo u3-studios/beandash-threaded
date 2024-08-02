@@ -13,7 +13,8 @@ func _ready():
 		
 	if Verdier.points > Verdier.highscore:
 		Verdier.highscore = Verdier.points
-		Verdier.points = 0
+	
+	Verdier.points = 0
 	
 	$Control/Highscore.text = "Highscore: " + str(Verdier.highscore)
 
