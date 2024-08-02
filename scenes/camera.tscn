@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dvak5i6xmxc7a"]
+
+[node name="Camera" type="Camera3D"]
+keep_aspect = 0

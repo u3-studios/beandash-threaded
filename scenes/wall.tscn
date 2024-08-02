@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccs4jqraxly8e"]
+
+[ext_resource type="Script" path="res://scripts/wall.gd" id="1_swhwn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_geu8w"]
+albedo_color = Color(0.359069, 0.359069, 0.359069, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_40xqi"]
+material = SubResource("StandardMaterial3D_geu8w")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j3lbh"]
+size = Vector3(1, 0.540039, 0.185028)
+
+[node name="wall" type="Node3D" node_paths=PackedStringArray("area", "ray")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305402, 0)
+script = ExtResource("1_swhwn")
+area = NodePath("Area3D")
+ray = NodePath("RayCast3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.88931, 0, 0, 0, 0.181215, -1.04969, 0.705504, 0)
+mesh = SubResource("BoxMesh_40xqi")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.88931, 0, 0, 0, 0.181215, 1.07811, 0.705504, 0)
+mesh = SubResource("BoxMesh_40xqi")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.41738, 0, 0, 0, 0.555223, 0, 0, 0, 0.181986, -0.0747647, 1.37916, 0)
+mesh = SubResource("BoxMesh_40xqi")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08142, 0.679857, -0.000717163)
+shape = SubResource("BoxShape3D_j3lbh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09361, 0.691877, -0.000717163)
+shape = SubResource("BoxShape3D_j3lbh")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0169957, 1.37102, -0.000717163)
+shape = SubResource("BoxShape3D_j3lbh")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.70517, 0)
+target_position = Vector3(0, -6, 0)

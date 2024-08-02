@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpip2px1y4wf"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_2mt0l"]
+[ext_resource type="Texture2D" uid="uid://diw4vvs2egxpy" path="res://Textures/knapp.png" id="2_vkvvg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nau0g"]
+albedo_color = Color(0, 0.403922, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nht1g"]
+material = SubResource("StandardMaterial3D_nau0g")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8kyb5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tom4g"]
+radius = 45.55
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_2mt0l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_nht1g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8kyb5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.907777, -0.0634466, 0.414626, 0, 0.988494, 0.151261, -0.419452, -0.137311, 0.897332, 1.43795, 0.713661, 1.01896)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScoreLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105634
+anchor_right = 0.105634
+offset_left = 164.0
+offset_top = 7.0
+offset_right = 261.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 151
+text = "0
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Down" type="TouchScreenButton" parent="Control"]
+position = Vector2(10, 872)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("2_vkvvg")
+shape = SubResource("CircleShape2D_tom4g")
+action = "ctrl"
+
+[node name="Down2" type="TouchScreenButton" parent="Control"]
+position = Vector2(671, 1076)
+rotation = 3.14159
+scale = Vector2(2, 2)
+texture_normal = ExtResource("2_vkvvg")
+shape = SubResource("CircleShape2D_tom4g")
+action = "ui_accept"
