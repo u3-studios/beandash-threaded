@@ -9,6 +9,12 @@ func _ready():
 	if Verdier.points > Verdier.highscore:
 		Verdier.highscore = Verdier.points
 		Verdier.points = 0
+		
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("""
+		fetch(`https://gamesbot.u3.style/highscore/"""+str(Verdier.points)+"""?game=beandash&${window.location.search.substr(1)}`)
+		""")
+	
 	$Control/Highscore.text = "Highscore: " + str(Verdier.highscore)
 
 
